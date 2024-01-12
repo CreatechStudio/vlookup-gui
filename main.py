@@ -121,9 +121,11 @@ class VlookupApp:
             elif result_method == 'Min':
                 merged_df.loc[mask, fill_column] = merged_df.groupby(self.compare_column_combobox.get())[self.data_source_column_combobox.get()].transform('min')
 
+            # Update the specified columns in target_df with values from merged_df
+            target_df.update(merged_df[[self.target_column_combobox.get(), fill_column]])
+            
             # Save the result to a new file or modify target.xlsx directly
-            merged_df = merged_df[['tCN_Name', 'tForm']]  # Selecting only desired columns
-            merged_df.to_excel(target_path.replace('.xlsx', '_result.xlsx'), index=False)
+            target_df.to_excel(target_path.replace('.xlsx', '_result.xlsx'), index=False)
 
             messagebox.showinfo("Success", "VLOOKUP completed successfully.")
 
