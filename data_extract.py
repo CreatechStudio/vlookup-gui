@@ -55,7 +55,7 @@ def data_extract_function(input_file_path):
             # Store in dictionary
             if header not in data_dict:
                 data_dict[header] = []
-            data_dict[header].append(value if value is not None else [])  # 添加空列表，而不是None
+            data_dict[header].append(value if value is not None else '')  # 添加空列表，而不是None
 
     # Check if any column has all empty lists and convert to empty list
     for header in headers:
@@ -98,7 +98,7 @@ def data_extract_function(input_file_path):
     # Publish variables
     return data_dict, valid_flag
 
-# data_extract_function("/Users/jessiezhu/Documents/GitHub/vlookup-gui/target_result.xlsx")
+data_extract_function("/Users/jessiezhu/Downloads/学号表.xlsx")
 
     # 打印全部原始数据
     # for header, values in data_dict.items():

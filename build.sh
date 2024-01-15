@@ -1,0 +1,1 @@
+/usr/local/bin/python3 -m PyInstaller -D --onefile --noupx --strip -w main.py --hidden-import pandas --hidden-import numpy --icon='/Users/jessiezhu/Documents/GitHub/Setting-Plan/icon.icns' --name Vlookup\ GUI --osx-bundle-identifier com.createchstudio.macos.vlookup

@@ -21,41 +21,41 @@ class VlookupApp:
         self.result_methods = ['Copy Value', 'Sum', 'Count', 'Unique Count', 'Average', 'Max', 'Min']
 
         # GUI Components
-        ttk.Label(root, text="Origin File:").grid(row=0, column=0, padx=5, pady=5)
+        ttk.Label(root, text="数据表:").grid(row=0, column=0, padx=5, pady=5)
         ttk.Entry(root, textvariable=self.origin_file_path, state='readonly', width=30).grid(row=0, column=1, padx=5, pady=5)
-        ttk.Button(root, text="Browse", command=self.browse_origin_file).grid(row=0, column=2, padx=5, pady=5)
+        ttk.Button(root, text="选择文件", command=self.browse_origin_file).grid(row=0, column=2, padx=5, pady=5)
 
-        ttk.Label(root, text="Target File:").grid(row=1, column=0, padx=5, pady=5)
-        ttk.Entry(root, textvariable=self.target_file_path, state='readonly', width=30).grid(row=1, column=1, padx=5, pady=5)
-        ttk.Button(root, text="Browse", command=self.browse_target_file).grid(row=1, column=2, padx=5, pady=5)
-
-        ttk.Label(root, text="Compare Column:").grid(row=2, column=0, padx=5, pady=5)
+        ttk.Label(root, text="查询数据表列:").grid(row=1, column=0, padx=5, pady=5)
         self.compare_column_combobox = ttk.Combobox(root, values=self.compare_columns, state='readonly')
-        self.compare_column_combobox.grid(row=2, column=1, padx=5, pady=5)
+        self.compare_column_combobox.grid(row=1, column=1, padx=5, pady=5)
 
-        ttk.Label(root, text="Compare Option:").grid(row=3, column=0, padx=5, pady=5)
+        ttk.Label(root, text="数据源列:").grid(row=2, column=0, padx=5, pady=5)
+        self.data_source_column_combobox = ttk.Combobox(root, textvariable=self.data_source_column, state='readonly')
+        self.data_source_column_combobox.grid(row=2, column=1, padx=5, pady=5)
+
+        ttk.Label(root, text="查询条件:").grid(row=3, column=0, padx=5, pady=5)
         self.compare_option_combobox = ttk.Combobox(root, values=self.compare_options, state='readonly')
         self.compare_option_combobox.grid(row=3, column=1, padx=5, pady=5)
         self.compare_option_combobox.set(self.compare_options[0])
 
-        ttk.Label(root, text="Target Column:").grid(row=4, column=0, padx=5, pady=5)
+        ttk.Label(root, text="待填写的表:").grid(row=4, column=0, padx=5, pady=5)
+        ttk.Entry(root, textvariable=self.target_file_path, state='readonly', width=30).grid(row=4, column=1, padx=5, pady=5)
+        ttk.Button(root, text="选择文件", command=self.browse_target_file).grid(row=4, column=2, padx=5, pady=5)
+
+        ttk.Label(root, text="待填数据表查询列:").grid(row=5, column=0, padx=5, pady=5)
         self.target_column_combobox = ttk.Combobox(root, textvariable=self.target_column, state='readonly')
-        self.target_column_combobox.grid(row=4, column=1, padx=5, pady=5)
+        self.target_column_combobox.grid(row=5, column=1, padx=5, pady=5)
 
-        ttk.Label(root, text="Fill Column:").grid(row=5, column=0, padx=5, pady=5)
+        ttk.Label(root, text="待填写列:").grid(row=6, column=0, padx=5, pady=5)
         self.fill_column_combobox = ttk.Combobox(root, textvariable=self.fill_column, state='readonly')
-        self.fill_column_combobox.grid(row=5, column=1, padx=5, pady=5)
+        self.fill_column_combobox.grid(row=6, column=1, padx=5, pady=5)
 
-        ttk.Label(root, text="Data Source Column:").grid(row=6, column=0, padx=5, pady=5)
-        self.data_source_column_combobox = ttk.Combobox(root, textvariable=self.data_source_column, state='readonly')
-        self.data_source_column_combobox.grid(row=6, column=1, padx=5, pady=5)
-
-        ttk.Label(root, text="Result Method:").grid(row=7, column=0, padx=5, pady=5)
+        ttk.Label(root, text="填写方式:").grid(row=7, column=0, padx=5, pady=5)
         self.result_method_combobox = ttk.Combobox(root, values=self.result_methods, textvariable=self.result_method, state='readonly')
         self.result_method_combobox.grid(row=7, column=1, padx=5, pady=5)
         self.result_method_combobox.set(self.result_methods[0])
 
-        ttk.Button(root, text="Run VLOOKUP", command=self.run_vlookup).grid(row=8, column=1, pady=10)
+        ttk.Button(root, text="运行VLOOK UP", command=self.run_vlookup).grid(row=8, column=1, pady=10)
 
     def browse_origin_file(self):
         file_path = askopenfilename(filetypes=[('Excel Files', '*.xlsx')])
